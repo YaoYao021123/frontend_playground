@@ -1,6 +1,6 @@
 import { useState, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Copy, Check, Code, ChevronDown, ChevronUp } from 'lucide-react';
+import { Play, Copy, Check, Code, ChevronUp } from 'lucide-react';
 
 interface EffectCardProps {
   id: string;

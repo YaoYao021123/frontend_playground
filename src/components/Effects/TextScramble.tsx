@@ -19,7 +19,7 @@ export const TextScramble = () => {
       setDisplayText(
         targetText
           .split('')
-          .map((letter, index) => {
+          .map((_, index) => {
             if (index < iteration) {
               return targetText[index];
             }
