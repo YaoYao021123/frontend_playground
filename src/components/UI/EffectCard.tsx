@@ -29,7 +29,8 @@ export const EffectCard = ({ title, description, Component, code }: EffectCardPr
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group border border-gray-800 rounded-xl overflow-hidden bg-gray-900/50 backdrop-blur-sm"
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group border border-gray-800 rounded-xl overflow-hidden bg-gray-900/50 backdrop-blur-sm hover:border-gray-700 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
     >
       {/* Preview Area */}
       <div className="relative h-64 bg-black overflow-hidden">
