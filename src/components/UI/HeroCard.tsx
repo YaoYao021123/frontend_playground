@@ -7,12 +7,12 @@ interface HeroCardProps {
 }
 
 const cardData = [
-  { id: 1, title: 'Fade', color: 'from-blue-500 to-cyan-400', emoji: '✨' },
-  { id: 2, title: 'Spring', color: 'from-purple-500 to-pink-400', emoji: '🎯' },
-  { id: 3, title: 'Text', color: 'from-orange-500 to-red-400', emoji: '📝' },
-  { id: 4, title: '3D', color: 'from-emerald-500 to-teal-400', emoji: '🎲' },
-  { id: 5, title: 'Morph', color: 'from-violet-500 to-fuchsia-400', emoji: '🌀' },
-  { id: 6, title: 'Wave', color: 'from-yellow-500 to-amber-400', emoji: '👋' },
+  { id: 1, title: 'Fade', color: 'from-[#3da9fc] to-[#90b4ce]', emoji: '✨' },
+  { id: 2, title: 'Spring', color: 'from-[#ef4565] to-[#f9bc60]', emoji: '🎯' },
+  { id: 3, title: 'Text', color: 'from-[#f9bc60] to-[#3da9fc]', emoji: '📝' },
+  { id: 4, title: '3D', color: 'from-[#90b4ce] to-[#ef4565]', emoji: '🎲' },
+  { id: 5, title: 'Morph', color: 'from-[#3da9fc] to-[#f9bc60]', emoji: '🌀' },
+  { id: 6, title: 'Wave', color: 'from-[#ef4565] to-[#90b4ce]', emoji: '👋' },
 ];
 
 export const HeroCard = ({ onEnter }: HeroCardProps) => {
@@ -54,15 +54,15 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
   return (
     <motion.div
       style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950"
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#094067]"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#3da9fc]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ef4565]/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Header - Artistic Title */}
+      {/* Header - Artistic Title with Happy Hues */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
         {/* Animated Artistic Title */}
         <div className="relative mb-6">
           <motion.h1 
-            className="text-6xl md:text-8xl font-black text-white tracking-tighter"
+            className="text-6xl md:text-8xl font-black text-[#fffffe] tracking-tighter"
             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
           >
             {'Frontend'.split('').map((char, i) => (
@@ -87,7 +87,7 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
                 }}
                 whileHover={{
                   scale: 1.2,
-                  color: '#60A5FA',
+                  color: '#3da9fc',
                   transition: { duration: 0.2 }
                 }}
                 className="inline-block cursor-default"
@@ -116,16 +116,16 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
                   rotate: Math.random() * 10 - 5,
                   transition: { duration: 0.2 }
                 }}
-                className="inline-block cursor-default bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                className="inline-block cursor-default bg-gradient-to-r from-[#3da9fc] via-[#ef4565] to-[#f9bc60] bg-clip-text text-transparent"
               >
                 {char}
               </motion.span>
             ))}
           </motion.h1>
           
-          {/* Glow Effect */}
+          {/* Glow Effect with Happy Hues */}
           <motion.div
-            className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10"
+            className="absolute -inset-4 bg-gradient-to-r from-[#3da9fc]/20 via-[#ef4565]/20 to-[#f9bc60]/20 blur-3xl -z-10"
             animate={{
               scale: [1, 1.1, 1],
               opacity: [0.3, 0.5, 0.3]
@@ -142,7 +142,7 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-xl text-gray-400 max-w-2xl mx-auto"
+          className="text-xl text-[#90b4ce] max-w-2xl mx-auto"
         >
           点击卡片揭示动画效果，或向下滚动进入 playground
         </motion.p>
@@ -179,21 +179,21 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
               className={`absolute inset-0 rounded-xl bg-gradient-to-br ${card.color} p-[2px] shadow-xl`}
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="w-full h-full bg-gray-900 rounded-xl flex flex-col items-center justify-center">
+              <div className="w-full h-full bg-[#fffffe] rounded-xl flex flex-col items-center justify-center">
                 <span className="text-3xl md:text-4xl mb-2">{card.emoji}</span>
-                <span className="text-xs md:text-sm font-medium text-white">{card.title}</span>
+                <span className="text-xs md:text-sm font-medium text-[#094067]">{card.title}</span>
               </div>
             </div>
             
             {/* Card Back (Hidden) */}
             <div 
-              className="absolute inset-0 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-700 flex items-center justify-center"
+              className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#094067] to-[#5f6c7b] border-2 border-[#3da9fc]/30 flex items-center justify-center"
               style={{ 
                 backfaceVisibility: 'hidden',
                 transform: 'rotateY(180deg)'
               }}
             >
-              <Wand2 className="w-8 h-8 text-gray-600" />
+              <Wand2 className="w-8 h-8 text-[#3da9fc]" />
             </div>
           </motion.div>
         ))}
@@ -205,16 +205,16 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
         animate={{ opacity: isRevealed ? 1 : 0 }}
         className="text-center z-10"
       >
-        <div className="text-gray-500 text-sm mb-4">
+        <div className="text-[#90b4ce] text-sm mb-4">
           已揭示 {flippedCards.length} / {cardData.length} 张卡片
         </div>
         
-        {/* Enter Button */}
+        {/* Enter Button - Happy Hues Style */}
         <motion.button
           onClick={handleEnter}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full font-semibold text-white shadow-lg shadow-purple-500/25 overflow-hidden"
+          className="group relative px-8 py-4 bg-[#3da9fc] rounded-full font-semibold text-[#fffffe] shadow-lg shadow-[#3da9fc]/25 overflow-hidden hover:bg-[#ef4565] transition-colors duration-300"
         >
           <span className="relative z-10 flex items-center gap-2">
             进入 Playground
@@ -225,12 +225,6 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
               <ChevronDown className="w-5 h-5" />
             </motion.span>
           </span>
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500"
-            initial={{ x: '100%' }}
-            whileHover={{ x: 0 }}
-            transition={{ duration: 0.3 }}
-          />
         </motion.button>
       </motion.div>
 
@@ -239,7 +233,7 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 text-sm flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#90b4ce] text-sm flex flex-col items-center gap-2"
       >
         <span>向下滚动</span>
         <motion.div

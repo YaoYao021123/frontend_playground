@@ -2,33 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Happy Hues Color Palette */
+/* Background Dark: #094067 */
+/* Background Light: #d8eefe */
+/* Background White: #fffffe */
+/* Text Main: #fffffe (on dark) */
+/* Text Dark: #094067 (on light) */
+/* Text Muted: #90b4ce */
+/* Primary: #3da9fc */
+/* Secondary: #ef4565 */
+/* Tertiary: #f9bc60 */
+
 body {
-  @apply bg-gray-950 text-white;
+  @apply bg-[#d8eefe] text-[#094067];
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Happy Hues style */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  @apply bg-[#d8eefe];
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-700 rounded-full;
+  @apply bg-[#90b4ce] rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-600;
+  @apply bg-[#3da9fc];
 }
 
-/* Code block styling */
+/* Code block styling - Happy Hues */
 pre {
-  @apply bg-gray-900 rounded-lg p-4 overflow-x-auto text-sm;
+  @apply bg-[#d8eefe] rounded-lg p-4 overflow-x-auto text-sm;
 }
 
 code {
-  @apply font-mono text-sm;
+  @apply font-mono text-sm text-[#094067];
+}
+
+/* Selection color */
+::selection {
+  @apply bg-[#3da9fc]/30 text-[#094067];
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-[#3da9fc];
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }

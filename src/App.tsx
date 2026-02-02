@@ -3,7 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { EffectCard } from './components/UI/EffectCard';
 import { HeroCard } from './components/UI/HeroCard';
 import { effects, categories } from './data/registry';
-import { Sparkles, Github, ArrowUp } from 'lucide-react';
+import { Github, ArrowUp } from 'lucide-react';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -11,7 +11,6 @@ function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll();
-  // Smooth progress for animations
   useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   const filteredEffects = activeCategory === 'all'
@@ -30,7 +29,7 @@ function App() {
     <div ref={containerRef} className="relative">
       {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#3da9fc] via-[#ef4565] to-[#f9bc60] z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -42,27 +41,26 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: hasEntered ? 1 : 0.3 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative z-30 min-h-screen bg-gray-950"
+        className="relative z-30 min-h-screen bg-[#d8eefe]"
         style={{ marginTop: '100vh' }}
       >
         {/* Header */}
-        <header className="sticky top-0 z-40 border-b border-gray-800 bg-gray-900/80 backdrop-blur-md">
+        <header className="sticky top-0 z-40 border-b border-[#90b4ce]/30 bg-white/80 backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg shadow-blue-500/20">
-                  <Sparkles className="w-6 h-6 text-white" />
+                <div className="p-2 bg-[#094067] rounded-xl shadow-lg">
+                  <span className="text-xl">✨</span>
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-white">Frontend Playground</h1>
-                  <p className="text-sm text-gray-400">Animation Effects Collection</p>
+                  <h1 className="text-xl font-bold text-[#094067]">Frontend Playground</h1>
+                  <p className="text-sm text-[#5f6c7b]">Animation Effects Collection</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <button
                   onClick={scrollToTop}
-                  className="p-2 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-gray-800"
-                  title="返回顶部"
+                  className="p-2 text-[#5f6c7b] hover:text-[#094067] transition-colors rounded-lg hover:bg-[#d8eefe]"
                 >
                   <ArrowUp className="w-5 h-5" />
                 </button>
@@ -70,7 +68,7 @@ function App() {
                   href="https://github.com/YaoYao021123/frontend_playground"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-gray-400 hover:text-white transition-colors"
+                  className="p-2 text-[#5f6c7b] hover:text-[#094067] transition-colors"
                 >
                   <Github className="w-6 h-6" />
                 </a>
@@ -80,7 +78,7 @@ function App() {
         </header>
 
         {/* Category Filter */}
-        <div className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-[73px] z-30">
+        <div className="border-b border-[#90b4ce]/30 bg-white/50 backdrop-blur-sm sticky top-[73px] z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
@@ -89,8 +87,8 @@ function App() {
                   onClick={() => setActiveCategory(category.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     activeCategory === category.id
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
-                      : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                      ? 'bg-[#ef4565] text-white shadow-lg'
+                      : 'bg-[#094067] text-white hover:bg-[#3da9fc]'
                   }`}
                 >
                   {category.label}
@@ -119,10 +117,10 @@ function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-gray-900/50 border border-gray-800 rounded-xl p-4 text-center"
+                className="bg-white border border-[#90b4ce]/30 rounded-xl p-4 text-center shadow-sm"
               >
-                <div className="text-2xl font-bold text-white">{stat.value}</div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-2xl font-bold text-[#094067]">{stat.value}</div>
+                <div className="text-sm text-[#5f6c7b]">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -152,21 +150,21 @@ function App() {
 
           {filteredEffects.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500">No effects found in this category.</p>
+              <p className="text-[#5f6c7b]">No effects found in this category.</p>
             </div>
           )}
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-gray-800 mt-20 bg-gray-900/30">
+        <footer className="border-t border-[#90b4ce]/30 mt-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#5f6c7b]">
                 Built with React + Tailwind CSS + Framer Motion
               </p>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <div className="flex items-center gap-2 text-sm text-[#5f6c7b]">
                 <span>Made with</span>
-                <span className="text-red-500">❤</span>
+                <span className="text-[#ef4565]">♥</span>
                 <span>by YaoYao</span>
               </div>
             </div>
