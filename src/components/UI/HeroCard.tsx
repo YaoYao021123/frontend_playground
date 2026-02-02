@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, Sparkles, Wand2 } from 'lucide-react';
+import { ChevronDown, Wand2 } from 'lucide-react';
 
 interface HeroCardProps {
   onEnter: () => void;
@@ -62,25 +62,90 @@ export const HeroCard = ({ onEnter }: HeroCardProps) => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Header */}
+      {/* Header - Artistic Title */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-center mb-12 z-10"
       >
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg shadow-blue-500/25">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
+        {/* Animated Artistic Title */}
+        <div className="relative mb-6">
+          <motion.h1 
+            className="text-6xl md:text-8xl font-black text-white tracking-tighter"
+            style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+          >
+            {'Frontend'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.05,
+                  ease: [0.215, 0.61, 0.355, 1]
+                }}
+                whileHover={{
+                  scale: 1.2,
+                  color: '#60A5FA',
+                  transition: { duration: 0.2 }
+                }}
+                className="inline-block cursor-default"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.h1>
+          
+          <motion.h1 
+            className="text-6xl md:text-8xl font-black tracking-tighter mt-2"
+            style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+          >
+            {'Playground'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.4 + i * 0.05,
+                  ease: [0.215, 0.61, 0.355, 1]
+                }}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: Math.random() * 10 - 5,
+                  transition: { duration: 0.2 }
+                }}
+                className="inline-block cursor-default bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.h1>
+          
+          {/* Glow Effect */}
+          <motion.div
+            className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-          Frontend
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Playground</span>
-        </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+        
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="text-xl text-gray-400 max-w-2xl mx-auto"
+        >
           点击卡片揭示动画效果，或向下滚动进入 playground
-        </p>
+        </motion.p>
       </motion.div>
 
       {/* Card Grid */}
